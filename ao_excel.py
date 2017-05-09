@@ -19,10 +19,13 @@ def init_wb(i):
 def init_values(ws,args):
 	dt = datetime.datetime.today().strftime("%Y-%m-%d")
 	max = ws.max_row
-	c = 'A'+str(max)
-	while ws[c].value == None or ws[c].value == "Date":
-		max -= 1
+	if max == 1:
+		max+=1
+	else:
 		c = 'A'+str(max)
+			while ws[c].value == None or ws[c].value == "Date":
+			max -= 1
+			c = 'A'+str(max)
 		
 	del args['item']
 	if args['p'] == None:
