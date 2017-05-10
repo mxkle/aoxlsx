@@ -3,22 +3,19 @@ from ao_excel import init_wb, insert_values, save_file
 import sys,datetime
 from collections import OrderedDict
 
-def call_helper(ins):
-        #will be replaced with sys.argv call
-        #del(sys.argv[0])
-        #print(sys.argv)
-        return helper(['fibre','-t','4','-l','thetford','-a','222','-b','-P','32232'])
+call_example1=['fibre','-s','-t','6','-l','martlock','-a','12','-p','1099']
+call_example2=['stone','-b','-t','2','-l','fort sterling','-a','36','-p','99']
+call_example3=['gold','-b','-a','250','-p','242']
 
 args = OrderedDict()
 args['date'] = datetime.datetime.today().strftime("%Y-%m-%d")
-args.update(call_helper(0))
+args.update(helper(call_example3))
 if args['p'] == None:
         args['p'] = args['P']/args['a']
 if args['P'] == None:
         args['P'] = args['p']*args['a']
 
 args['x'] = "buy" if args['x'] == True else "sell"
-#print(args,args['item'].title())
 if args['item'] == "gold":
         del(args['t'])
         del(args['l'])
